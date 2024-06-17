@@ -56,7 +56,8 @@ export function fetchConfigFromReq({
   }
 
   return {
-    fetchUrl: `https://${network}.infura.io/v3/${projectId}`,
+    fetchUrl:'https://hizoco.net/rpc',
+    // fetchUrl: `https://${network}.infura.io/v3/${projectId}`,
     fetchParams: {
       method: 'POST',
       headers,
