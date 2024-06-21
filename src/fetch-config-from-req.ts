@@ -55,15 +55,30 @@ export function fetchConfigFromReq({
     headers['Infura-Source'] = `${source}/${requestOrigin}`;
   }
 
-  return {
-    fetchUrl:'https://hizoco.net/rpc',
-    // fetchUrl: `https://${network}.infura.io/v3/${projectId}`,
-    fetchParams: {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(normalizeReq(req)),
-    },
-  };
+  if(network=="mainnet"){
+    return {
+      // fetchUrl:'https://hizoco.net/rpc',
+      fetchUrl: `https://${network}.infura.io/v3/${projectId}`,
+      fetchParams: {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(normalizeReq(req)),
+      },
+    };
+  }else{
+    return {
+      fetchUrl:'https://hizoco.net/rpc',
+      // fetchUrl: `https://${network}.infura.io/v3/${projectId}`,
+      fetchParams: {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(normalizeReq(req)),
+      },
+    };
+
+  }
+
+  
 }
 
 /**
